@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a mi página</title>
+    <!-- Importa el componente de Google para el renderizado 3D y AR -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <style>
+        /* Fondo general con el tono lila pastel */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #E8DFF5; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* Contenedor del encabezado superior */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+            padding: 0 15px;
+            z-index: 10;
+        }
+
+        /* Título superior de bienvenida */
+        .header-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4A148C;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Imagen del conejo pequeña al lado del título */
+        .rabbit-thumbnail {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #7B2CBF;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        /* Contenedor relativo para el visor y la imagen del mate superpuesta */
+        .viewer-container {
+            width: 100%;
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Contenedor del visor 3D en lila claro */
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            background-color: #F3EAFE;
+            --poster-color: transparent; 
+        }
+
+        /* Imagen fija del mate posicionada arriba del botón AR */
+        .mate-overlay {
+            position: absolute;
+            bottom: 110px; /* Posicionada estratégicamente sobre el botón */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: auto;
+            pointer-events: none; /* Permite interactuar con el 3D que está detrás */
+            z-index: 5;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.15));
+        }
+
+        /* Botón inferior para activar la Realidad Aumentada */
+        #ar-button {
+            background-color: #7B2CBF;
+            border-radius: 30px;
+            border: none;
+            color: white;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: bold;
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            z-index: 10;
+        }
+
+        #ar-button:active {
+            background-color: #5A189A;
+            transform: translateX(-50%) scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado con título e imagen pequeña del conejo al lado -->
+    <div class="header-container">
+        <div class="header-title">
+            bienvenido a mi pagina. ٩(ˊᗜˋ )و
+        </div>
+        <img src="#chiikawa #usagi.png" alt="Conejo Usagi" class="rabbit-thumbnail">
+    </div>
+
+    <!-- Contenedor del visor 3D y elementos superpuestos -->
+    <div class="viewer-container">
+        
+        <!-- Visor 3D configurado con la imagen del mate como poster inicial de carga -->
+        <model-viewer 
+            src="mateurbano.glb" 
+            ios-src="mate_urbano aipon.usdz"
+            poster="BRAVO-4001B-VIOLETA-1.png" 
+            ar 
+            ar-modes="webxr scene-viewer quick-look" 
+            camera-controls 
+            shadow-intensity="1" 
+            auto-rotate>
+            
+            <!-- Botón interactivo para activar la Realidad Aumentada -->
+            <button slot="ar-button" id="ar-button">
+                ✨ Ver en tu espacio (AR)
+            </button>
+            
+        </model-viewer>
+
+        <!-- Imagen fija del mate colocada de forma flotante arriba del botón -->
+        <img src="BRAVO-4001B-VIOLETA-1.png" alt="Mate Urbano Violeta" class="mate-overlay">
+
+    </div>
+
+</body>
+</html>
