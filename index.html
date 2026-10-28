@@ -153,13 +153,15 @@
 
     <img src="BRAVO-4001B-VIOLETA-1.jpg" alt="Mate Urbano" class="mate-image-header">
 
-    <!-- SE CORRIGIÓ: Se añadieron src e ios-src directamente para que el modelo precargue -->
+    <!-- SE AGREGARON: ar-scale="auto" y ar-placement="floor" para corregir la visualización en la cámara -->
     <model-viewer 
         id="modelViewer"
         src="mateurbano.glb" 
         ios-src="mate_urbanoaipon.usdz"
         ar 
         ar-modes="webxr scene-viewer quick-look" 
+        ar-scale="auto"
+        ar-placement="floor"
         camera-controls 
         poster="cargando.png" 
         shadow-intensity="1" 
@@ -171,7 +173,6 @@
             </div>
         </div>
 
-        <!-- El botón AR nativo correctamente enlazado al slot -->
         <button slot="ar-button" id="ar-button">
             🎇 Ver en tu espacio (AR) 🎇
         </button>
@@ -179,7 +180,6 @@
     </model-viewer>
 
     <script>
-        // Script para los brillitos del conejo (queda intacto)
         const usagiButton = document.getElementById('usagiButton');
 
         usagiButton.addEventListener('click', () => {
