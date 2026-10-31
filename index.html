@@ -25,13 +25,20 @@
 
         .header-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
+            margin-top: 15px;
             padding: 0 15px;
             z-index: 10;
             position: relative;
+        }
+
+        .title-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
 
         .header-title {
@@ -40,6 +47,16 @@
             color: #4A148C;
             text-align: center;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para el subtítulo de recomendación AR */
+        .header-subtitle {
+            font-size: 13px;
+            color: #6B3E99;
+            text-align: center;
+            margin-top: 6px;
+            max-width: 90%;
+            line-height: 1.3;
         }
 
         .usagi-btn {
@@ -80,9 +97,9 @@
         }
 
         .mate-image-header {
-            width: 90px;
+            width: 85px;
             height: auto;
-            margin: 12px 0 8px 0;
+            margin: 8px 0 6px 0;
             filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.15));
             z-index: 10;
         }
@@ -120,7 +137,7 @@
         /* Estilo para el botón AR nativo de model-viewer */
         #ar-button {
             position: absolute;
-            bottom: 30px;
+            bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
             background-color: #7B2CBF;
@@ -145,15 +162,18 @@
 <body>
 
     <div class="header-container">
-        <div class="header-title">Bienvenido a mi página. ٩(ˊᗜˋ )و </div>
-        <button class="usagi-btn" id="usagiButton" type="button" aria-label="Conejo interactivo">
-            <img src="chiikawa-usagi.jfif" alt="Conejo" class="usagi-thumb">
-        </button>
+        <div class="title-row">
+            <div class="header-title">Bienvenido a mi página. ٩(ˊᗜˋ )و</div>
+            <button class="usagi-btn" id="usagiButton" type="button" aria-label="Conejo interactivo">
+                <img src="chiikawa-usagi.jfif" alt="Conejo" class="usagi-thumb">
+            </button>
+        </div>
+        <div class="header-subtitle">Recomendación: enfoca hacia una superficie con textura rugosa el celular y tenelo a una distancia media para que funcione correctamente.</div>
     </div>
 
     <img src="BRAVO-4001B-VIOLETA-1.jpg" alt="Mate Urbano" class="mate-image-header">
 
-    <!-- SE AGREGARON: ar-scale="auto" y ar-placement="floor" para corregir la visualización en la cámara -->
+    <!-- model-viewer con soporte AR -->
     <model-viewer 
         id="modelViewer"
         src="mateurbano.glb" 
